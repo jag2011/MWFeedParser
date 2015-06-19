@@ -74,6 +74,10 @@ static NSDateFormatter *_internetDateTimeFormatter = nil;
                     [dateFormatter setDateFormat:@"EEE, d MMM yyyy HH:mm"]; 
                     date = [dateFormatter dateFromString:RFC822String];
                 }
+                if (!date) { // Sun, 19 May 2002, 15:21
+                    [dateFormatter setDateFormat:@"EEE, d MMM yyyy, HH:mm"];
+                    date = [dateFormatter dateFromString:RFC822String];
+                }
             } else {
                 if (!date) { // 19 May 2002 15:21:36 GMT
                     [dateFormatter setDateFormat:@"d MMM yyyy HH:mm:ss zzz"]; 
